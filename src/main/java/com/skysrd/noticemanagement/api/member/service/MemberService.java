@@ -12,7 +12,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public MemberSignupResponse signup(MemberSignupRequest memberSignupRequest) {
-        Member member = memberSignupRequest.toMember();
+        Member member = MemberSignupRequest.toMember(memberSignupRequest);
         return MemberSignupResponse.toResponse(member);
     }
 }
