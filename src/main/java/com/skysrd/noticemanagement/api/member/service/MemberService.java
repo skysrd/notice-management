@@ -5,7 +5,9 @@ import com.skysrd.noticemanagement.api.member.domain.request.MemberSignupRequest
 import com.skysrd.noticemanagement.api.member.domain.response.MemberResponse;
 import com.skysrd.noticemanagement.api.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class MemberService {
     //사용자 관리 서비스
