@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database: h2
+    generate-ddl: off
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;
+    username: SA
+    password:
+  sql:
+    init:
+      mode: embedded
+      data-locations: classpath:data-h2.sql
+      schema-locations: classpath:schema-h2.sql
