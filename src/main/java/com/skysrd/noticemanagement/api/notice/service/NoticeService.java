@@ -40,6 +40,8 @@ public class NoticeService {
                         .errorMessage(NoticeErrorCode.NOTICE_NOT_FOUND.getText())
                         .build());
 
+        notice.read();
+
         return NoticeResponse.toResponse(notice);
     }
 

@@ -64,4 +64,8 @@ public class Notice extends BaseEntity {
         this.startDate = updateNoticeRequest.getStartDate();
         this.endDate = updateNoticeRequest.getEndDate();
     }
+
+    public void read() {
+        this.readCount++;
+    }
 }
