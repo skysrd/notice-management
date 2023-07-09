@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -12,6 +14,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "notices")
+@NoArgsConstructor
 public class Notice extends BaseEntity {
 
     @Id @Column(name = "notice_id")
@@ -39,5 +42,15 @@ public class Notice extends BaseEntity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.readCount = readCount;
+    }
+
+    @Builder(builderClassName = "createBuilder", builderMethodName = "createBuilder")
+    public Notice(String title, String content, LocalDateTime startDate, LocalDateTime endDate) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.readCount = 0;
     }
 }
