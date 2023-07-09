@@ -1,17 +1,20 @@
 package com.skysrd.noticemanagement.api.notice.domain.entity;
 
+import com.skysrd.noticemanagement.api.notice.domain.request.UpdateNoticeRequest;
 import com.skysrd.noticemanagement.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "notices")
 @NoArgsConstructor
@@ -52,5 +55,13 @@ public class Notice extends BaseEntity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.readCount = 0;
+    }
+
+    @Builder(builderClassName = "updateBuilder", builderMethodName = "updateBuilder")
+    public void updateNotice(UpdateNoticeRequest updateNoticeRequest) {
+        this.title = updateNoticeRequest.getTitle();
+        this.content = updateNoticeRequest.getContent();
+        this.startDate = updateNoticeRequest.getStartDate();
+        this.endDate = updateNoticeRequest.getEndDate();
     }
 }
