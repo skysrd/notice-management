@@ -8,17 +8,19 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class MemberSignupResponse {
+public class MemberResponse {
+    //사용자 Id
     private UUID memberId;
+    //사용자 역할
     private MemberRole memberRole;
 
     @Builder(builderClassName = "responseBuilder", builderMethodName = "responseBuilder")
-    public MemberSignupResponse(UUID memberId, MemberRole memberRole) {
+    public MemberResponse(UUID memberId, MemberRole memberRole) {
         this.memberId = memberId;
         this.memberRole = memberRole;
     }
 
-    public static MemberSignupResponse toResponse(Member member) {
+    public static MemberResponse toResponse(Member member) {
         return responseBuilder()
                 .memberId(member.getId())
                 .memberRole(member.getMemberRole())
