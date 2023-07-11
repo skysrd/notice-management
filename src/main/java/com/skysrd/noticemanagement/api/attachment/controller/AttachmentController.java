@@ -1,8 +1,7 @@
 package com.skysrd.noticemanagement.api.attachment.controller;
 
-import com.amazonaws.Response;
+import com.skysrd.noticemanagement.api.attachment.domain.request.UploadAttachmentRequest;
 import com.skysrd.noticemanagement.api.attachment.service.AttachmentService;
-import com.skysrd.noticemanagement.common.component.S3Upload;
 import com.skysrd.noticemanagement.common.result.ResponseHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,9 +23,13 @@ public class AttachmentController {
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestParam("images") MultipartFile multipartFile) throws IOException {
+        UploadAttachmentRequest uploadAttachmentRequest = UploadAttachmentRequest.builder()
+                .multipartFile(multipartFile)
+                .build();
+
         return ResponseHandler.generate()
                 .status(HttpStatus.CREATED)
-                .data(attachmentService.upload(multipartFile))
+                .data(attachmentService.uploadAttachment(uploadAttachmentRequest))
                 .build();
     }
 }
