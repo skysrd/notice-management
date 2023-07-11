@@ -1,15 +1,17 @@
-package com.skysrd.noticemanagement.api.attatchment.domain.entity;
+package com.skysrd.noticemanagement.api.attachment.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Table(name = "attatchments")
 @Entity
+@NoArgsConstructor
 public class Attatchment {
     //첨부파일
 
