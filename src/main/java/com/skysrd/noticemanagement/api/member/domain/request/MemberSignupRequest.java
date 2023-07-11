@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MemberSignupRequest {
+    //사용자 권한
     private MemberRole memberRole;
 
     @Builder
