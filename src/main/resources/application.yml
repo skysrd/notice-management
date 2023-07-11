@@ -1,3 +1,16 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAX25ZL5T4CPD6HX4L     # AWS IAM AccessKey 적기
+      secretKey: Xw/oRuI6HVodKQR9SsfMmSboi8wKxEeGLAED8Qq9   # AWS IAM SecretKey 적기
+    s3:
+      bucket: rsupport-notice-management   # ex) marryting-gyunny
+      dir: /image # ex) /gyunny
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+
 spring:
   config:
     activate:
@@ -18,5 +31,7 @@ spring:
   sql:
     init:
       mode: embedded
-      data-locations: classpath:data-h2.sql
-      schema-locations: classpath:schema-h2.sql
+      data-locations:
+        classpath: data-h2.sql
+      schema-locations:
+        classpath: schema-h2.sql

@@ -1,6 +1,6 @@
-package com.skysrd.noticemanagement.api.attatchment.repository;
+package com.skysrd.noticemanagement.api.attachment.repository;
 
-import com.skysrd.noticemanagement.api.attatchment.domain.entity.Attatchment;
+import com.skysrd.noticemanagement.api.attachment.domain.entity.Attatchment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
