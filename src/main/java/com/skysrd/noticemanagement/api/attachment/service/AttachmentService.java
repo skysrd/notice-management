@@ -1,9 +1,12 @@
 package com.skysrd.noticemanagement.api.attachment.service;
 
+import com.skysrd.noticemanagement.api.attachment.domain.entity.Attachment;
+import com.skysrd.noticemanagement.api.attachment.domain.request.UploadAttachmentRequest;
+import com.skysrd.noticemanagement.api.attachment.domain.response.AttachmentResponse;
+import com.skysrd.noticemanagement.api.attachment.repository.AttatchmentRepository;
 import com.skysrd.noticemanagement.common.component.S3Upload;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -11,8 +14,16 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AttachmentService {
     private final S3Upload s3Upload;
+    private final AttatchmentRepository attatchmentRepository;
 
-    public String upload(MultipartFile multipartFile) throws IOException {
-        return s3Upload.upload(multipartFile);
+    public AttachmentResponse uploadAttachment(UploadAttachmentRequest uploadAttachmentRequest) throws IOException {
+        Attachment attatchment = Attachment.createBuilder()
+                .callerId(uploadAttachmentRequest.getCallerId())
+                .path(s3Upload.upload(uploadAttachmentRequest.getMultipartFile()))
+                .build();
+
+        attatchmentRepository.save(attatchment);
+
+        return AttachmentResponse.toResponse(attatchment);
     }
 }
