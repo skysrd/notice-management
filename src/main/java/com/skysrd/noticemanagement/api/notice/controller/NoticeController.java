@@ -3,7 +3,7 @@ package com.skysrd.noticemanagement.api.notice.controller;
 import com.skysrd.noticemanagement.api.notice.domain.request.CreateNoticeRequest;
 import com.skysrd.noticemanagement.api.notice.domain.request.DeleteNoticeRequest;
 import com.skysrd.noticemanagement.api.notice.domain.request.UpdateNoticeRequest;
-import com.skysrd.noticemanagement.api.notice.service.AdminNoticeServiceImpl;
+import com.skysrd.noticemanagement.api.notice.service.NoticeService;
 import com.skysrd.noticemanagement.common.result.ResponseHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,13 +16,13 @@ import java.util.UUID;
 @RequestMapping("/api/notice")
 @RequiredArgsConstructor
 public class NoticeController {
-    private final AdminNoticeServiceImpl adminNoticeServiceImpl;
+    private final NoticeService noticeService;
 
     @PostMapping()
     public ResponseEntity<?> createNotice(@RequestBody CreateNoticeRequest createNoticeRequest) {
         return ResponseHandler.generate()
                 .status(HttpStatus.CREATED)
-                .data(adminNoticeServiceImpl.createNotice(createNoticeRequest))
+                .data(noticeService.createNotice(createNoticeRequest))
                 .build();
     }
 
@@ -30,7 +30,7 @@ public class NoticeController {
     public ResponseEntity<?> getNoticeList() {
         return ResponseHandler.generate()
                 .status(HttpStatus.OK)
-                .data(adminNoticeServiceImpl.getNoticeList())
+                .data(noticeService.getNoticeList())
                 .build();
     }
 
@@ -38,7 +38,7 @@ public class NoticeController {
     public ResponseEntity<?> getNoticeDetail(@RequestParam UUID noticeId) {
         return  ResponseHandler.generate()
                 .status(HttpStatus.OK)
-                .data(adminNoticeServiceImpl.getNoticeDetail(noticeId))
+                .data(noticeService.getNoticeDetail(noticeId))
                 .build();
     }
 
@@ -46,13 +46,13 @@ public class NoticeController {
     public ResponseEntity<?> updateNotice(@RequestBody UpdateNoticeRequest updateNoticeRequest) {
         return ResponseHandler.generate()
                 .status(HttpStatus.OK)
-                .data(adminNoticeServiceImpl.updateNotice(updateNoticeRequest))
+                .data(noticeService.updateNotice(updateNoticeRequest))
                 .build();
     }
 
     @DeleteMapping()
     public ResponseEntity<?> deleteNotice(@RequestBody DeleteNoticeRequest deleteNoticeRequest) {
-        adminNoticeServiceImpl.deleteNotice(deleteNoticeRequest);
+        noticeService.deleteNotice(deleteNoticeRequest);
 
         return ResponseHandler.generate()
                 .status(HttpStatus.OK)
