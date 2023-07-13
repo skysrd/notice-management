@@ -35,7 +35,7 @@ public class NoticeController {
     }
 
     @GetMapping("/detail")
-    public ResponseEntity<?> getNoticeDetail(UUID noticeId) {
+    public ResponseEntity<?> getNoticeDetail(@RequestParam UUID noticeId) {
         return  ResponseHandler.generate()
                 .status(HttpStatus.OK)
                 .data(adminNoticeServiceImpl.getNoticeDetail(noticeId))
