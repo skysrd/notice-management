@@ -1,4 +1,4 @@
-package com.skysrd.noticemanagement.api.notice.service;
+package com.skysrd.noticemanagement.api.notice.service.Impl;
 
 import com.skysrd.noticemanagement.api.notice.domain.entity.Notice;
 import com.skysrd.noticemanagement.api.notice.domain.enums.NoticeErrorCode;
@@ -7,6 +7,7 @@ import com.skysrd.noticemanagement.api.notice.domain.request.DeleteNoticeRequest
 import com.skysrd.noticemanagement.api.notice.domain.request.UpdateNoticeRequest;
 import com.skysrd.noticemanagement.api.notice.domain.response.NoticeResponse;
 import com.skysrd.noticemanagement.api.notice.repository.NoticeRepository;
+import com.skysrd.noticemanagement.api.notice.service.NoticeService;
 import com.skysrd.noticemanagement.common.exception.ApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AdminNoticeServiceImpl implements NoticeService{
+public class AdminNoticeServiceImpl implements NoticeService {
     private final NoticeRepository noticeRepository;
 
     public UUID createNotice(CreateNoticeRequest createNoticeRequest) {
@@ -54,6 +55,7 @@ public class AdminNoticeServiceImpl implements NoticeService{
                         .build());
 
         notice.updateNotice(updateNoticeRequest);
+        noticeRepository.save(notice);
 
         return notice.getId();
     }
