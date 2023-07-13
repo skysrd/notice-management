@@ -20,7 +20,7 @@ public class MemberService {
     @Transactional
     public MemberResponse signup(MemberSignupRequest memberSignupRequest) {
         //사용자 인스턴스 생성
-        Member member = MemberSignupRequest.toMember(memberSignupRequest);
+        Member member = MemberSignupRequest.toEntity(memberSignupRequest);
         //사용자 추가
         memberRepository.save(member);
         //사용자 응답 반환

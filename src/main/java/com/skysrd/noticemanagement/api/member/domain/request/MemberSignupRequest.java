@@ -17,7 +17,7 @@ public class MemberSignupRequest {
         this.memberRole = memberRole;
     }
 
-    public static Member toMember(MemberSignupRequest memberSignupRequest) {
+    public static Member toEntity(MemberSignupRequest memberSignupRequest) {
         return Member.createBuilder()
                 .memberRole(memberSignupRequest.getMemberRole())
                 .build();
