@@ -4,19 +4,14 @@ import com.skysrd.noticemanagement.api.member.domain.entity.Member;
 import com.skysrd.noticemanagement.api.member.domain.enums.MemberRole;
 import com.skysrd.noticemanagement.api.member.domain.request.MemberSignupRequest;
 import com.skysrd.noticemanagement.api.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith({MockitoExtension.class})
