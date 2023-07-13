@@ -45,7 +45,7 @@ public class AdminNoticeServiceImpl implements NoticeService{
         return NoticeResponse.toResponse(notice);
     }
 
-    public NoticeResponse updateNotice(UpdateNoticeRequest updateNoticeRequest) {
+    public UUID updateNotice(UpdateNoticeRequest updateNoticeRequest) {
         Notice notice = noticeRepository.findById(updateNoticeRequest.getId())
                 .orElseThrow(() -> ApiException.builder()
                         .status(HttpStatus.NOT_FOUND)
@@ -55,7 +55,7 @@ public class AdminNoticeServiceImpl implements NoticeService{
 
         notice.updateNotice(updateNoticeRequest);
 
-        return NoticeResponse.toResponse(notice);
+        return notice.getId();
     }
 
     public void deleteNotice(DeleteNoticeRequest deleteNoticeRequest) {
