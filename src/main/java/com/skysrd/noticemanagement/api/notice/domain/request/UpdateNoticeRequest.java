@@ -1,6 +1,6 @@
 package com.skysrd.noticemanagement.api.notice.domain.request;
 
-import jakarta.persistence.Column;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -13,4 +13,13 @@ public class UpdateNoticeRequest {
     private String content;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+
+    @Builder(builderClassName = "createBuilder", builderMethodName = "createBuilder")
+    public UpdateNoticeRequest(UUID id, String title, String content, LocalDateTime startDate, LocalDateTime endDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }
