@@ -1,5 +1,6 @@
 package com.skysrd.noticemanagement.common.exception;
 
+import com.skysrd.noticemanagement.api.member.domain.enums.MemberErrorCode;
 import com.skysrd.noticemanagement.common.result.JsonResultData;
 import lombok.Builder;
 import lombok.Getter;
