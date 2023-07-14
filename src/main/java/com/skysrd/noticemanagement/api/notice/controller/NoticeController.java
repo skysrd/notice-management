@@ -23,7 +23,7 @@ public class NoticeController {
 
     @PostMapping()
     public ResponseEntity<?> createNotice(@RequestPart CreateNoticeRequest createNoticeRequest,
-                                          @RequestPart List<MultipartFile> files) throws IOException {
+                                          @RequestPart(required = false)List<MultipartFile> files) throws IOException {
         createNoticeRequest.setFileList(files);
         return ResponseHandler.generate()
                 .status(HttpStatus.CREATED)
