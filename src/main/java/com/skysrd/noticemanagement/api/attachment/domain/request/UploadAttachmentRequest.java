@@ -1,21 +1,20 @@
 package com.skysrd.noticemanagement.api.attachment.domain.request;
 
-import com.skysrd.noticemanagement.api.attachment.domain.entity.Attachment;
-import com.skysrd.noticemanagement.common.component.S3Upload;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
 public class UploadAttachmentRequest {
     private UUID callerId;
-    private MultipartFile multipartFile;
+    private List<MultipartFile> files;
 
     @Builder
-    public UploadAttachmentRequest(UUID callerId, MultipartFile multipartFile) {
+    public UploadAttachmentRequest(UUID callerId, List<MultipartFile> files) {
         this.callerId = callerId;
-        this.multipartFile = multipartFile;
+        this.files = files;
     }
 }

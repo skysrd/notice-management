@@ -3,9 +3,7 @@ package com.skysrd.noticemanagement.api.attachment.domain.response;
 import com.skysrd.noticemanagement.api.attachment.domain.entity.Attachment;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 @Getter

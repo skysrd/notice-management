@@ -1,5 +1,7 @@
 package com.skysrd.noticemanagement.api.notice.service.Impl;
 
+import com.skysrd.noticemanagement.api.attachment.domain.request.UploadAttachmentRequest;
+import com.skysrd.noticemanagement.api.attachment.service.AttachmentService;
 import com.skysrd.noticemanagement.api.notice.domain.entity.Notice;
 import com.skysrd.noticemanagement.api.notice.domain.enums.NoticeErrorCode;
 import com.skysrd.noticemanagement.api.notice.domain.request.CreateNoticeRequest;

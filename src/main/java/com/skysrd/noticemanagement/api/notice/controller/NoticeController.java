@@ -9,7 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,7 +22,9 @@ public class NoticeController {
     private final NoticeService noticeService;
 
     @PostMapping()
-    public ResponseEntity<?> createNotice(@RequestBody CreateNoticeRequest createNoticeRequest) {
+    public ResponseEntity<?> createNotice(@RequestPart CreateNoticeRequest createNoticeRequest,
+                                          @RequestPart List<MultipartFile> files) throws IOException {
+        createNoticeRequest.setFileList(files);
         return ResponseHandler.generate()
                 .status(HttpStatus.CREATED)
                 .data(noticeService.createNotice(createNoticeRequest))
