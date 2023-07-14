@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,10 +22,22 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AdminNoticeServiceImpl implements NoticeService {
     private final NoticeRepository noticeRepository;
+    private final AttachmentService attachmentService;
 
-    public UUID createNotice(CreateNoticeRequest createNoticeRequest) {
+    public UUID createNotice(CreateNoticeRequest createNoticeRequest) throws IOException {
         Notice notice = CreateNoticeRequest.toEntity(createNoticeRequest);
-        return noticeRepository.save(notice).getId();
+        UUID noticeId = noticeRepository.save(notice).getId();
+
+        if (createNoticeRequest.getFileList() != null) {
+            UploadAttachmentRequest uploadAttachmentRequest = UploadAttachmentRequest.builder()
+                    .files(createNoticeRequest.getFileList())
+                    .callerId(noticeId)
+                    .build();
+
+            attachmentService.uploadAttachment(uploadAttachmentRequest);
+        }
+
+        return noticeId;
     }
 
     public List<NoticeResponse> getNoticeList() {
