@@ -54,7 +54,13 @@ public class AdminNoticeServiceImpl implements NoticeService {
                         .errorMessage(NoticeErrorCode.NOTICE_NOT_FOUND.getText())
                         .build());
 
-        notice.updateNotice(updateNoticeRequest);
+        notice.updateBuilder()
+                .title(updateNoticeRequest.getTitle())
+                .content(updateNoticeRequest.getContent())
+                .startDate(updateNoticeRequest.getStartDate())
+                .endDate(updateNoticeRequest.getEndDate())
+                .build();
+
         noticeRepository.save(notice);
 
         return notice.getId();
