@@ -1,6 +1,5 @@
 package com.skysrd.noticemanagement.api.notice.domain.entity;
 
-import com.skysrd.noticemanagement.api.notice.domain.request.UpdateNoticeRequest;
 import com.skysrd.noticemanagement.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +8,6 @@ import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -58,11 +56,11 @@ public class Notice extends BaseEntity {
     }
 
     @Builder(builderClassName = "updateBuilder", builderMethodName = "updateBuilder")
-    public void updateNotice(UpdateNoticeRequest updateNoticeRequest) {
-        this.title = updateNoticeRequest.getTitle();
-        this.content = updateNoticeRequest.getContent();
-        this.startDate = updateNoticeRequest.getStartDate();
-        this.endDate = updateNoticeRequest.getEndDate();
+    public void updateNotice(String title, String content, LocalDateTime startDate, LocalDateTime endDate) {
+        this.title = title;
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public void read() {
