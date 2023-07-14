@@ -39,3 +39,6 @@ spring:
 logging:
   level:
     org.hibernate.sql:
+
+profiles:
+  active: memh2

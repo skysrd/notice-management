@@ -104,11 +104,9 @@ class NoticeServiceTest {
 
         //then
         Notice notice = noticeRepository.findById(noticeId).get();
-        assertThat(noticeResponse.getId()).isEqualTo(notice.getId());
         assertThat(noticeResponse.getTitle()).isEqualTo(notice.getTitle());
         assertThat(noticeResponse.getContent()).isEqualTo(notice.getContent());
-        assertThat(noticeResponse.getStartDate()).isEqualTo(notice.getStartDate());
-        assertThat(noticeResponse.getEndDate()).isEqualTo(notice.getEndDate());
+        assertThat(noticeResponse.getCreateDate()).isEqualTo(notice.getCreatedDate());
         assertThat(noticeResponse.getReadCount()).isEqualTo(notice.getReadCount() + 1); //조회하면서 발생한 reflect와의 차이 보정
     }
 

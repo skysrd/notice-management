@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -25,5 +27,9 @@ public class MemberService {
         memberRepository.save(member);
         //사용자 응답 반환
         return MemberResponse.toResponse(member);
+    }
+
+    public Boolean isMemberExist(UUID memberId) {
+        return memberRepository.existsById(memberId);
     }
 }

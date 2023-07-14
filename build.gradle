@@ -30,6 +30,7 @@ dependencies {
 	implementation 'com.amazonaws:aws-java-sdk-s3'
 	implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.1000')
 	implementation 'org.projectlombok:lombok:1.18.20'
+	implementation 'mysql:mysql-connector-java:8.0.32'
 	runtimeOnly 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

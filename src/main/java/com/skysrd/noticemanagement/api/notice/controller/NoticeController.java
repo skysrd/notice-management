@@ -22,8 +22,10 @@ public class NoticeController {
     private final NoticeService noticeService;
 
     @PostMapping()
-    public ResponseEntity<?> createNotice(@RequestPart CreateNoticeRequest createNoticeRequest,
+    public ResponseEntity<?> createNotice(@RequestParam(required = true) UUID creatorId,
+                                              @RequestPart CreateNoticeRequest createNoticeRequest,
                                           @RequestPart(required = false)List<MultipartFile> files) throws IOException {
+        createNoticeRequest.setCreatorId(creatorId);
         createNoticeRequest.setFileList(files);
         return ResponseHandler.generate()
                 .status(HttpStatus.CREATED)

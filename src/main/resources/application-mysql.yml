@@ -1,0 +1,41 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAX25ZL5T4CPD6HX4L
+      secretKey: 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
+    s3:
+      bucket: rsupport-notice-management
+      dir: /image
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/notice
+    hikari:
+      username: notice
+      password: management
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        show_sql: true
+        default_batch_fetch_size: 1000
+    open-in-view: false
+    database: mysql
+
+logging:
+  level:
+    org.hibernate.sql: debug
+
+profiles:
+  active: mysql

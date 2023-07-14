@@ -1,7 +1,6 @@
 package com.skysrd.noticemanagement.api.notice.domain.response;
 
 import com.skysrd.noticemanagement.api.notice.domain.entity.Notice;
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,31 +9,28 @@ import java.util.UUID;
 
 @Getter
 public class NoticeResponse {
-    private UUID id;
     private String title;
     private String content;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime createDate;
     private Integer readCount;
+    private UUID createdBy;
 
-    @Builder
-    public NoticeResponse(UUID id, String title, String content, LocalDateTime startDate, LocalDateTime endDate, Integer readCount) {
-        this.id = id;
+    @Builder(builderClassName = "createBuilder", builderMethodName = "createBuilder")
+    public NoticeResponse(String title, String content, LocalDateTime createDate, Integer readCount, UUID createdBy) {
         this.title = title;
         this.content = content;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.createDate = createDate;
         this.readCount = readCount;
+        this.createdBy = createdBy;
     }
 
     public static NoticeResponse toResponse(Notice notice) {
-        return NoticeResponse.builder()
-                .id(notice.getId())
+        return NoticeResponse.createBuilder()
                 .title(notice.getTitle())
                 .content(notice.getContent())
-                .startDate(notice.getStartDate())
-                .endDate(notice.getEndDate())
+                .createDate(notice.getCreatedDate())
                 .readCount(notice.getReadCount())
+                .createdBy(notice.getCreatedBy())
                 .build();
     }
 }

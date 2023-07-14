@@ -1,13 +1,11 @@
 package com.skysrd.noticemanagement.api.notice.domain.entity;
 
 import com.skysrd.noticemanagement.common.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -24,6 +22,7 @@ public class Notice extends BaseEntity {
     @Column(name = "title")
     private String title;
 
+    @Lob
     @Column(name = "content")
     private String content;
 
@@ -36,23 +35,29 @@ public class Notice extends BaseEntity {
     @Column(name = "read_count")
     private Integer readCount;
 
-    public Notice(String title, String content, LocalDateTime startDate, LocalDateTime endDate, Integer readCount) {
-        this.id = UUID.randomUUID();
+    @CreatedBy
+    @Column(name = "created_by", updatable = false)
+    private UUID createdBy;
+
+    public Notice(UUID id, String title, String content, LocalDateTime startDate, LocalDateTime endDate, Integer readCount, UUID createdBy) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
         this.readCount = readCount;
+        this.createdBy = createdBy;
     }
 
     @Builder(builderClassName = "createBuilder", builderMethodName = "createBuilder")
-    public Notice(String title, String content, LocalDateTime startDate, LocalDateTime endDate) {
+    public Notice(String title, String content, LocalDateTime startDate, LocalDateTime endDate, UUID createdBy) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.content = content;
         this.startDate = startDate;
         this.endDate = endDate;
         this.readCount = 0;
+        this.createdBy = createdBy;
     }
 
     @Builder(builderClassName = "updateBuilder", builderMethodName = "updateBuilder")
