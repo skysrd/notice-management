@@ -1,11 +1,11 @@
 cloud:
   aws:
     credentials:
-      accessKey: AKIAX25ZL5T4CPD6HX4L
-      secretKey: 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
+      accessKey:
+      secretKey:
     s3:
-      bucket: rsupport-notice-management
-      dir: /image
+      bucket:
+      dir:
     region:
       static: us-east-1
     stack:

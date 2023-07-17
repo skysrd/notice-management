@@ -113,6 +113,19 @@ MySQL과 같은 DB를 구축한 상황을 상정해 직접 DB의 값을 확인�
 <br>
 
 ## 구동 방법
+1. 하기 설정을 application-memh2.yml에 추가하기
+```
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAX25ZL5T4CPD6HX4L
+      secretKey: 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
+    s3:
+      bucket: rsupport-notice-management
+      dir: /image
+```
+2. bootJar 명령어로 실행 파일 만들기
+
 ``` ./gradlew bootJar -Dspring.profile.active=memh2```
 
 ---

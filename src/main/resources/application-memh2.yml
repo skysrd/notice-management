@@ -1,11 +1,11 @@
 cloud:
   aws:
     credentials:
-      accessKey: AKIAX25ZL5T4CPD6HX4L     # AWS IAM AccessKey 적기
-      secretKey: Xw/oRuI6HVodKQR9SsfMmSboi8wKxEeGLAED8Qq9   # AWS IAM SecretKey 적기
+      accessKey:
+      secretKey:
     s3:
-      bucket: rsupport-notice-management   # ex) marryting-gyunny
-      dir: /image # ex) /gyunny
+      bucket:
+      dir:
     region:
       static: us-east-1
     stack:
